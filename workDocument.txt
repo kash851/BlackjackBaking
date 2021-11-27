@@ -1,0 +1,9 @@
+Blackjack:
+	Take an order
+	Whatever what was on that order has specific target numbers and locations
+	Have that location store the target number for the blackjack game, and once it is won
+	Send signals to start a game of blackjack and signals for when it finishes
+	 
+Orders:
+	Each order item should be a number(Singleton?)
+	
