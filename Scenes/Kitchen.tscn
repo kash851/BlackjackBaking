@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Scripts/Blackjack.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=2]
 
 [node name="Kitchen" type="Node2D"]
 script = ExtResource( 1 )
@@ -23,3 +24,8 @@ margin_bottom = 600.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Player" parent="." instance=ExtResource( 2 )]
+scale = Vector2( 1.08966, 0.946879 )
+
+[node name="Timer" type="Timer" parent="."]

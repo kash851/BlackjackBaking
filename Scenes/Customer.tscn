@@ -1,12 +1,8 @@
 [gd_scene load_steps=2 format=2]
 
-[sub_resource type="SpriteFrames" id=1]
-animations = [ {
-"frames": [  ],
-"loop": false,
-"name": "default",
-"speed": 5.0
-} ]
+[ext_resource path="res://Scripts/Customer.gd" type="Script" id=1]
 
-[node name="AnimatedSprite" type="AnimatedSprite"]
-frames = SubResource( 1 )
+[node name="Customer" type="Sprite"]
+script = ExtResource( 1 )
+
+[node name="Timer" type="Timer" parent="."]
