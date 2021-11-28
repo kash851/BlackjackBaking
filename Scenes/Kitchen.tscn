@@ -29,3 +29,5 @@ __meta__ = {
 scale = Vector2( 1.08966, 0.946879 )
 
 [node name="Timer" type="Timer" parent="."]
+
+[connection signal="fail" from="Player" to="." method="_on_Player_fail"]

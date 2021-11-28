@@ -8,3 +8,5 @@ position = Vector2( 400, 200 )
 texture = ExtResource( 2 )
 script = ExtResource( 1 )
 positions = [ Vector2( 400, 200 ), Vector2( 400, 400 ), Vector2( 600, 200 ) ]
+
+[node name="Timer" type="Timer" parent="."]

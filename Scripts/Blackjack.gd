@@ -37,6 +37,16 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	label.text = ""
+	var mixerOrdersText = "Mixer Orders: "
+	var ovenOrdersText = "Oven Orders: "
+	for x in player.ovenOrders:
+		ovenOrdersText += str(x) + ","
+	ovenOrdersText += "\n"
+	for x in player.mixerOrders:
+		mixerOrdersText += str(x) + ","
+	mixerOrdersText += "\n"
+	label.text += mixerOrdersText
+	label.text += ovenOrdersText
 	label.text += "Order: " + targetName + "\n"
 	label.text += "Target Number: " + str(target) + "\n"
 	label.text += "Player Current Number: " + str(playerCurrent) + "\n"
@@ -54,11 +64,10 @@ func blackJackHit():
 
 func onTimerTimeout():
 	var node = customer.instance()
-	if(not get_node("Customer")):
-		add_child(node)
-		self.connect("finished", get_node("Customer"), "onFinished")
-		print("customer added")
-	$Timer.start(5.0)
+	add_child(node)
+	self.connect("finished", get_node("Customer"), "onFinished")
+	print("customer added")
+	$Timer.start(15.0)
 
 func blackJackCall():
 	print("calling")
@@ -92,19 +101,18 @@ func blackJackStart(order):
 	calling = false
 	playerCurrent = 0
 	AICurrent = 0
-	target = OrderConstants.orders[order]
+	target = OrderConstants.orders[order][0]
 	targetName = order
 
 func blackJackReset():
 	if(label):
 		yield(get_tree().create_timer(0.5),"timeout")
 	calling = false
-	randomize()
-	target = OrderConstants.orders[keys[randi() % 3]]
-	for x in keys:
-		if OrderConstants.orders[x]  == target:
-			targetName = x
 	playerCurrent = 0
 	AICurrent = 0
 
 
+
+
+func _on_Player_fail():
+	blackJackReset()
