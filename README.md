@@ -1,4 +1,4 @@
-# BlackjackBaking
+# Blackjack Baking
 Hey, 
 
 I made this for my capstone in 72 hours
