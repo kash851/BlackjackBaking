@@ -13,6 +13,7 @@ var AICurrent = 0
 var targetName = ""
 var calling = false
 
+
 signal finished(win)
 
 var customer = preload("res://Scenes/Customer.tscn")
@@ -35,7 +36,7 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	label.text = ""
 	var mixerOrdersText = "Mixer Orders: "
 	var ovenOrdersText = "Oven Orders: "

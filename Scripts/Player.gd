@@ -17,6 +17,8 @@ var mixerOrders = []
 var mixing = false
 var mixWindow = false
 
+var selection = 0
+
 var currentState = State.STATE_MOVEMENT
 #This is the current index of the positon array
 var currentPos = 0
@@ -66,11 +68,10 @@ func movementState():
 					print($Timer.time_left)
 
 func orderState():
-	var allOrders = mixerOrders + ovenOrders
-	var selection = 0 	
+	var allOrders = mixerOrders + ovenOrders 	
 	if(allOrders):
 		if(Input.is_action_just_pressed("ui_right")):
-			selection = (selection + 1) % allOrders.size()
+			selection = selection % allOrders.size()
 			print("Current Selection: " + str(allOrders[selection]))
 		elif(Input.is_action_just_pressed("ui_left")):
 			emit_signal("start",allOrders[selection])
@@ -93,7 +94,11 @@ func blackJackFinished(win):
 		$Timer.stop()
 		currentState = State.STATE_MOVEMENT
 	else:
-		$Timer.start(rand_range(15,20))
+		if currentState == State.STATE_MIXER:
+			$Timer.start(rand_range(5,10))
+			mixing = true
+		else:
+			$Timer.start(rand_range(15,20))
 
 func mixerState():
 	if(Input.is_action_just_pressed("ui_right")):
